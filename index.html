@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a2f1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="IAYPAA X">
+    <meta name="description" content="IAYPAA X - From Muck to Miracle - Iowa City, IA 2026">
+    
+    <title>IAYPAA X - From Muck to Miracle</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <img src="images/logo.jpg" alt="IAYPAA X Logo" class="splash-logo">
+            <div class="splash-loader">
+                <div class="ooze-drip"></div>
+                <div class="ooze-drip"></div>
+                <div class="ooze-drip"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="header-title">IAYPAA X</h1>
+                <button id="search-btn" class="header-btn" aria-label="Search">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Search Modal -->
+        <div id="search-modal" class="modal hidden">
+            <div class="modal-content search-modal-content">
+                <div class="search-header">
+                    <input type="text" id="search-input" placeholder="Search events, speakers..." autocomplete="off">
+                    <button id="close-search" class="close-btn">&times;</button>
+                </div>
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="main-content">
+            <!-- Home View -->
+            <section id="home-view" class="view active">
+                <div class="hero-section">
+                    <img src="images/logo.jpg" alt="IAYPAA X - From Muck to Miracle" class="hero-logo">
+                    <div class="hero-info">
+                        <h2 class="hero-title">10th Annual Conference</h2>
+                        <p class="hero-tagline">From Muck to Miracle</p>
+                        <div class="hero-details">
+                            <div class="detail-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span>October 2026</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Iowa City, Iowa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-links">
+                    <button class="quick-link-card" data-view="events">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <span>Full Schedule</span>
+                    </button>
+                    <button class="quick-link-card" data-view="my-schedule">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                        </div>
+                        <span>My Schedule</span>
+                    </button>
+                    <button class="quick-link-card" data-view="info">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>
+                        <span>Info</span>
+                    </button>
+                    <button class="quick-link-card" data-view="map">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                                <line x1="8" y1="2" x2="8" y2="18"></line>
+                                <line x1="16" y1="6" x2="16" y2="22"></line>
+                            </svg>
+                        </div>
+                        <span>Venue Map</span>
+                    </button>
+                </div>
+
+                <div class="whats-happening">
+                    <h3 class="section-title">What's Happening Now</h3>
+                    <div id="current-events" class="current-events-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h3 class="section-title">What's IAYPAA?</h3>
+                    <div class="about-content">
+                        <p>Iowa Young People In Alcoholics Anonymous provides an opportunity for A.A. members from all over the state to come together and share their experience, strength, and hope.</p>
+                        <p>It is a function of A.A. members in accordance with GSO guidelines for 'Conference and Conventions' that allows for heavy participation in service aspects of the conference by newer and/or younger Iowa members, providing exposure to the 12 Traditions, 12 Concepts for World Service, service committees, and a convention of A.A. members—all vital components of the attraction that keep people coming back.</p>
+                        <p>IAYPAA conference was first held in Des Moines, Iowa in 2016. It continues to move to different cities across the state. At each conference, bids are accepted from cities wishing to host the next IAYPAA conference.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Events View -->
+            <section id="events-view" class="view">
+                <div class="view-header">
+                    <h2>Conference Schedule</h2>
+                    <p class="view-subtitle">Tap events to add to your schedule</p>
+                </div>
+                
+                <div class="day-tabs">
+                    <button class="day-tab active" data-day="friday">Friday</button>
+                    <button class="day-tab" data-day="saturday">Saturday</button>
+                    <button class="day-tab" data-day="sunday">Sunday</button>
+                </div>
+
+                <div class="events-filter">
+                    <select id="venue-filter" class="filter-select">
+                        <option value="all">All Venues</option>
+                        <option value="grand-ballroom">Grand Ballroom</option>
+                        <option value="board-room">Board Room</option>
+                        <option value="hideout">The Hideout</option>
+                        <option value="loft">The Loft</option>
+                        <option value="outside">Outside</option>
+                    </select>
+                    <select id="type-filter" class="filter-select">
+                        <option value="all">All Types</option>
+                        <option value="speaker">Speakers</option>
+                        <option value="panel">Panels</option>
+                        <option value="meeting">Meetings</option>
+                        <option value="social">Social Events</option>
+                        <option value="registration">Registration</option>
+                    </select>
+                </div>
+
+                <div id="events-list" class="events-list">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- My Schedule View -->
+            <section id="my-schedule-view" class="view">
+                <div class="view-header">
+                    <h2>My Schedule</h2>
+                    <p class="view-subtitle">Drag to reorder • Swipe to remove</p>
+                </div>
+
+                <div class="my-schedule-tabs">
+                    <button class="day-tab active" data-day="friday">Friday</button>
+                    <button class="day-tab" data-day="saturday">Saturday</button>
+                    <button class="day-tab" data-day="sunday">Sunday</button>
+                </div>
+
+                <div id="my-schedule-list" class="my-schedule-list">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div id="empty-schedule" class="empty-state hidden">
+                    <div class="empty-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>No Events Yet</h3>
+                    <p>Browse the schedule and tap events to add them here!</p>
+                    <button class="btn-primary" data-view="events">Browse Events</button>
+                </div>
+            </section>
+
+            <!-- Info View -->
+            <section id="info-view" class="view">
+                <div class="view-header">
+                    <h2>Conference Info</h2>
+                </div>
+
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <h3>Venue</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <p class="venue-name">Iowa Memorial Union</p>
+                            <p class="venue-address">125 N Madison St<br>Iowa City, IA 52242</p>
+                            <a href="https://maps.google.com/?q=Iowa+Memorial+Union+Iowa+City" target="_blank" class="btn-outline">Get Directions</a>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <h3>Registration</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <div class="registration-times">
+                                <div class="reg-day">
+                                    <strong>Friday</strong>
+                                    <span>3:00 PM - 6:00 PM</span>
+                                    <span>9:00 PM - 10:00 PM</span>
+                                </div>
+                                <div class="reg-day">
+                                    <strong>Saturday</strong>
+                                    <span>8:00 AM - 6:00 PM</span>
+                                    <span>9:00 PM - 10:00 PM</span>
+                                </div>
+                                <div class="reg-day">
+                                    <strong>Sunday</strong>
+                                    <span>8:00 AM - 9:00 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                                <line x1="6" y1="1" x2="6" y2="4"></line>
+                                <line x1="10" y1="1" x2="10" y2="4"></line>
+                                <line x1="14" y1="1" x2="14" y2="4"></line>
+                            </svg>
+                            <h3>Hospitality Suite</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <div class="hospitality-times">
+                                <div class="hosp-day">
+                                    <strong>Friday</strong>
+                                    <span>3:00 PM - 6:00 PM</span>
+                                    <span>10:00 PM - Midnight</span>
+                                </div>
+                                <div class="hosp-day">
+                                    <strong>Saturday</strong>
+                                    <span>12:00 AM - 2:00 AM</span>
+                                    <span>7:00 AM - 6:00 PM</span>
+                                    <span>10:00 PM - Midnight</span>
+                                </div>
+                                <div class="hosp-day">
+                                    <strong>Sunday</strong>
+                                    <span>Midnight - 2:00 AM</span>
+                                    <span>7:00 AM - 9:00 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <h3>Key Times</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <div class="key-times">
+                                <div class="key-time">
+                                    <span class="time">Friday 8:00 PM</span>
+                                    <span class="event">Main Speaker</span>
+                                </div>
+                                <div class="key-time">
+                                    <span class="time">Saturday 7:00 PM</span>
+                                    <span class="event">Sobriety Countdown</span>
+                                </div>
+                                <div class="key-time">
+                                    <span class="time">Saturday 8:00 PM</span>
+                                    <span class="event">Main Speaker</span>
+                                </div>
+                                <div class="key-time">
+                                    <span class="time">Saturday 10:00 PM</span>
+                                    <span class="event">Dance Party</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card full-width">
+                        <div class="info-card-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <h3>Contact</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <p>Questions? Reach out to the Host Committee!</p>
+                            <a href="https://iaypaa.org" target="_blank" class="btn-outline">Visit iaypaa.org</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Map View -->
+            <section id="map-view" class="view">
+                <div class="view-header">
+                    <h2>Venue Map</h2>
+                </div>
+                
+                <div class="venue-rooms">
+                    <div class="room-card">
+                        <div class="room-color grand-ballroom"></div>
+                        <div class="room-info">
+                            <h4>Grand Ballroom</h4>
+                            <p>Main speakers, Hype, Roll Call, Sobriety Countdown</p>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-color board-room"></div>
+                        <div class="room-info">
+                            <h4>Board Room</h4>
+                            <p>Panels, Workshops, Meditation</p>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-color hideout"></div>
+                        <div class="room-info">
+                            <h4>The Hideout</h4>
+                            <p>Smaller panels, Intimate discussions</p>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-color loft"></div>
+                        <div class="room-info">
+                            <h4>The Loft</h4>
+                            <p>Bid Skits, Special events</p>
+                        </div>
+                    </div>
+                    <div class="room-card">
+                        <div class="room-color outside"></div>
+                        <div class="room-info">
+                            <h4>Outside</h4>
+                            <p>Field Day, Outdoor meetings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-placeholder">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                        <line x1="8" y1="2" x2="8" y2="18"></line>
+                        <line x1="16" y1="6" x2="16" y2="22"></line>
+                    </svg>
+                    <p>Detailed venue map coming soon!</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-view="home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" data-view="events">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Events</span>
+            </button>
+            <button class="nav-item" data-view="my-schedule">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>My Schedule</span>
+            </button>
+            <button class="nav-item" data-view="info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>Info</span>
+            </button>
+            <button class="nav-item" data-view="more">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <span>More</span>
+            </button>
+        </nav>
+
+        <!-- More Menu Drawer -->
+        <div id="more-drawer" class="drawer hidden">
+            <div class="drawer-overlay"></div>
+            <div class="drawer-content">
+                <div class="drawer-header">
+                    <h3>More</h3>
+                    <button class="close-drawer">&times;</button>
+                </div>
+                <div class="drawer-menu">
+                    <button class="drawer-item" data-view="map">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                        </svg>
+                        <span>Venue Map</span>
+                    </button>
+                    <button class="drawer-item" id="install-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Add to Home Screen</span>
+                    </button>
+                    <button class="drawer-item" id="share-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
+                        <span>Share App</span>
+                    </button>
+                    <div class="drawer-divider"></div>
+                    <a href="https://iaypaa.org" target="_blank" class="drawer-item">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span>Visit iaypaa.org</span>
+                    </a>
+                </div>
+                <div class="drawer-footer">
+                    <p>IAYPAA X - From Muck to Miracle</p>
+                    <p class="version">Version 1.0.0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Detail Modal -->
+        <div id="event-modal" class="modal hidden">
+            <div class="modal-content event-modal-content">
+                <button class="modal-close">&times;</button>
+                <div id="event-detail" class="event-detail">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered'))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>
