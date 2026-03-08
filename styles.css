@@ -735,6 +735,61 @@ body {
     margin-bottom: var(--spacing-md);
 }
 
+/* Speaker Corner */
+.speakers-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.speaker-card {
+    background: var(--ooze-medium);
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    transition: all var(--transition-normal);
+}
+
+.speaker-card:hover {
+    border-color: var(--gold-primary);
+    box-shadow: var(--shadow-gold);
+}
+
+.speaker-photo-placeholder {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    background: rgba(201, 162, 39, 0.1);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-primary);
+    border: 2px dashed rgba(201, 162, 39, 0.3);
+}
+
+.speaker-info {
+    flex: 1;
+}
+
+.speaker-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.speaker-bio {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
 /* Buttons */
 .btn-primary {
     display: inline-flex;
