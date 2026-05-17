@@ -94,7 +94,7 @@ const scheduleData = {
             endTime: '10:30 PM',
             title: 'Outside Meeting',
             venue: 'outside',
-            venueLabel: 'Patio Area',
+            venueLabel: 'Patio',
             type: 'meeting',
             description: 'Casual outdoor meeting. Cigar friendly.'
         },
